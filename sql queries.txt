@@ -1,0 +1,9 @@
+INSERT INTO tLoginInformation (Username,Password,Admin)
+VALUES ('test','dupa123',0);
+
+SELECT Worker_ID
+From tLoginInformation
+WHERE ROWID=last_insert_rowid();
+
+INSERT INTO tPersonalInformation(Worker_ID,Name,Surname,Office_Location)
+VALUES (20,'Wawrzyniec','Wnuk','Poland');
