@@ -3,14 +3,21 @@ from tkinter import messagebox
 from tkinter import filedialog
 import functions
 import sqlite3
+import os
 from sqlite3 import Error
 
+
+dirname = os.path.dirname(__file__)
+notepad_icon = os.path.join(dirname, 'pictures\\notepad.png')
+terms_of_use = os.path.join(dirname, 'Terms of use.txt')
+database_file = os.path.join(dirname, 'database.sqlite')
+login_icon = os.path.join(dirname, 'pictures\\login_button.png')
 
 class WindowsContainer(tkinter.Tk):
     def __init__(self, *args, **kwargs):
         tkinter.Tk.__init__(self, *args, **kwargs)
         self.geometry("400x400")
-        self.iconphoto(True, tkinter.PhotoImage(file="pictures\\notepad.png"))
+        self.iconphoto(True, tkinter.PhotoImage(file=notepad_icon))
         self.title("Notepad2000")
         self.resizable(width=0, height=0)
         self.login_window = LoginWindow()
@@ -39,7 +46,7 @@ class EditorWindow(tkinter.Toplevel):
         self.saved_font_size = 14
 
         self.geometry("400x400")
-        self.iconphoto(True, tkinter.PhotoImage(file="pictures\\notepad.png"))
+        self.iconphoto(True, tkinter.PhotoImage(file=notepad_icon))
         self.title("Notepad2000")
         self.resizable(width=0, height=0)
 
@@ -184,7 +191,7 @@ class AdminPanelWindow(tkinter.Toplevel):
         self.search_results_number = 0
         self.search_results_label_list = []
         self.geometry("900x550")
-        self.iconphoto(True,tkinter.PhotoImage(file="pictures\\notepad.png"))
+        self.iconphoto(True,tkinter.PhotoImage(file=notepad_icon))
         self.title("Notepad2000")
         self.resizable(width=0, height=0)
         self.username_entry_var = tkinter.StringVar()
@@ -383,7 +390,7 @@ class LoginWindow(tkinter.Toplevel):
         tkinter.Toplevel.__init__(self, *args, **kwargs)
         self.terms_checkbox_value = tkinter.IntVar()
         self.geometry("400x400")
-        self.iconphoto(True,tkinter.PhotoImage(file="pictures\\notepad.png"))
+        self.iconphoto(True,tkinter.PhotoImage(file=notepad_icon))
         self.title("Notepad2000")
         self.resizable(width=0, height=0)
         self.login_frame = tkinter.Frame(self)
@@ -409,7 +416,7 @@ class LoginWindow(tkinter.Toplevel):
                                                   offvalue=0,
                                                   variable=self.terms_checkbox_value,
                                                   command=self.enable_disable_login_button_activator)
-        self.login_image=tkinter.PhotoImage(file="pictures\\login_button.png")
+        self.login_image=tkinter.PhotoImage(file=login_icon)
         self.login_button = tkinter.Button(self,
                                            text="Login",
                                            font=("Arial",16),
@@ -457,19 +464,19 @@ class TermsWindow(tkinter.Toplevel):
         self.geometry("400x400")
         self.resizable(width=0, height=0)
         self.title("Terms")
-        self.iconphoto(True, tkinter.PhotoImage(file="pictures\\notepad.png"))
+        self.iconphoto(True, tkinter.PhotoImage(file=notepad_icon))
         self.focus_force()
         self.text_field = tkinter.Text(self, width=54, height=100, font=("Arial", 10))
         self.scroll_bar = tkinter.Scrollbar(self, orient="vertical", command=self.text_field.yview)
         self.text_field.pack(side="left")
-        self.text_field.insert(tkinter.END, functions.load_text_file("Terms of use.txt"))
+        self.text_field.insert(tkinter.END, functions.load_text_file(terms_of_use))
         self.text_field.configure(state="disabled", yscrollcommand=self.scroll_bar.set)
 
         self.scroll_bar.pack(side="right", fill="y")
 
 class Database:
     def __init__(self):
-        self.database_filepath = "database.sqlite"
+        self.database_filepath = database_file
         self.connection = self.create_connection(self.database_filepath)
     def create_connection(self, database_filepath):
         connection = None
@@ -518,7 +525,7 @@ class FontSelectionWindow(tkinter.Toplevel):
         self.geometry("400x200")
         self.resizable(width=0, height=0)
         self.title("Font Selection")
-        self.iconphoto(True, tkinter.PhotoImage(file="pictures\\notepad.png"))
+        self.iconphoto(True, tkinter.PhotoImage(file=notepad_icon))
 
 
         self.group_font = tkinter.StringVar()
