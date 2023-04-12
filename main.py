@@ -1,7 +1,6 @@
 import classes
 import functions
 import tkinter
-import sql_statements
 
 database = classes.Database()
 windows_container = classes.WindowsContainer()

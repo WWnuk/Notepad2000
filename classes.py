@@ -5,8 +5,6 @@ import functions
 import sqlite3
 from sqlite3 import Error
 
-import sql_statements
-
 
 class WindowsContainer(tkinter.Tk):
     def __init__(self, *args, **kwargs):
