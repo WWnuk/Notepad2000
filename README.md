@@ -48,6 +48,14 @@ Launch main.py file with a python interpreter you installed:
 ```bash
 C:/Users/user/AppData/Local/Programs/Python/Python310/python.exe main.py
 ```
+Use the following username to login first time:
+```bash
+admin
+```
+Use the following password to login first time:
+```bash
+admin
+```
 ## Authors
 
 - [Wawrzyniec Wnuk](https://github.com/WWnuk)
