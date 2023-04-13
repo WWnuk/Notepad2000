@@ -17,6 +17,7 @@ Project purpose is to create a demo notepad program that allows user to open/sav
 - Edit and save any plain text document
 - Change font family and size
 - Login to notepad and feel like you are using some high-tech fancy software
+- Create and manage users using high-definition Admin console
 - Approx. 620 lines of code
 
 
